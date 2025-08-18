@@ -15,10 +15,10 @@ import javax.swing.JOptionPane;
  */
 public class ConnectDB {
     
-    //private static final String url = "jdbc:h2:tcp://localhost/~/DataBases/H2/todoListDB";
+    //private static final String url = "jdbc:h2:tcp://localhost/~/DataBases/H2/tarefas";
     private static final String url = "jdbc:h2:mem:todoListDB";
-    private static final String user = "sa";
-    private static final String password = "";
+    private static final String user = "jason";
+    private static final String password = "js1902r";
     
     public static Connection getConnection() {
         try {

@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class TarefaService {
     
-    private TarefaRepository repository = new TarefaRepository();
+    private final TarefaRepository repository = new TarefaRepository();
     
     public void createTable() {
         repository.createTable();

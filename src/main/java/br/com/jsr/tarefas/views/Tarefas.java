@@ -19,14 +19,14 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Tarefas extends javax.swing.JFrame {
     
-    private TarefaService service = new TarefaService();
+    private final TarefaService service = new TarefaService();
 
     /**
      * Creates new form Tarefas
      */
     public Tarefas() {
         initComponents();
-        service.createTable();
+        //service.createTable();
         carregarTabela();
     }
 

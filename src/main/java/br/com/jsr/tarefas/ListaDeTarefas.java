@@ -30,15 +30,15 @@ public class ListaDeTarefas {
             Logger.getLogger(ListaDeTarefas.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        //TarefaService service = new TarefaService();
+        TarefaService service = new TarefaService();
         
-        //service.createTable();
+        service.createTable();
         
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new Tarefas().setVisible(true);
-//            }
-//        });
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Tarefas().setVisible(true);
+            }
+        });
         
         // Criação e instânciação do 'objeto' tarefa
         //Tarefa tarefa = new Tarefa();
