@@ -27,7 +27,7 @@ public class Tarefas extends javax.swing.JFrame {
     public Tarefas() {
         initComponents();
         service.createTable();
-        loadTable();
+        carregarTabela();
     }
 
     /**
@@ -268,15 +268,10 @@ public class Tarefas extends javax.swing.JFrame {
         t.setTitulo(txtTitulo.getText());
         t.setLocal(txtLocal.getText());
         t.setDescricao(txtDescricao.getText());
-        
-//        DateTimeFormatter formataData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-//        LocalDate dti = LocalDate.parse(txtDataInicio.getText(), formataData);
-//        LocalDate dtf = LocalDate.parse(txtDataFim.getText(), formataData);
-        
         t.setDataInicio(formataData(txtDataInicio.getText()));
         t.setDataFim(formataData(txtDataFim.getText()));
         service.salvar(t);
-        loadTable();
+        carregarTabela();
         limparCampos();
     }//GEN-LAST:event_btnSalvarActionPerformed
 
@@ -315,7 +310,7 @@ public class Tarefas extends javax.swing.JFrame {
         });
     }
     
-    private void loadTable() {
+    private void carregarTabela() {
         List<Tarefa> tarefas = service.listarTarefas();
         if(tarefas != null) {
             String[] colunas = {"Título", "Local", "Data Inicial", "Término"};

@@ -30,15 +30,15 @@ public class ListaDeTarefas {
             Logger.getLogger(ListaDeTarefas.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+        //TarefaService service = new TarefaService();
+        
+        //service.createTable();
+        
 //        java.awt.EventQueue.invokeLater(new Runnable() {
 //            public void run() {
 //                new Tarefas().setVisible(true);
 //            }
 //        });
-        
-        //TarefaService service = new TarefaService();
-        
-        //service.createTable();
         
         // Criação e instânciação do 'objeto' tarefa
         //Tarefa tarefa = new Tarefa();
@@ -57,7 +57,7 @@ public class ListaDeTarefas {
         //    JOptionPane.showMessageDialog(null, t.toString());
         //}
 
-// Criação e instânciação do 'objeto' tarefa
+        //Criação e instânciação do 'objeto' tarefa
 //        Tarefa tarefa = new Tarefa();
         // Alterando os dados de uma tarefa
 //        tarefa.setId((long) 3);
