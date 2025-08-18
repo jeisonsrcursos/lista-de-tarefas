@@ -4,7 +4,6 @@
  */
 package br.com.jsr.tarefas.service;
 
-import br.com.jsr.tarefas.dao.ConnectDB;
 import br.com.jsr.tarefas.model.Tarefa;
 import br.com.jsr.tarefas.repository.TarefaRepository;
 import java.sql.SQLException;
@@ -17,6 +16,10 @@ import java.util.List;
 public class TarefaService {
     
     private TarefaRepository repository = new TarefaRepository();
+    
+    public void createTable() {
+        repository.createTable();
+    }
     
     public void salvar(Tarefa tarefa) {
         try {

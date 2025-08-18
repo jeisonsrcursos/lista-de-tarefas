@@ -4,27 +4,47 @@
  */
 package br.com.jsr.tarefas.repository;
 
-import br.com.jsr.tarefas.dao.ConnectDB;
-import static br.com.jsr.tarefas.dao.ConnectDB.getConnection;
 import br.com.jsr.tarefas.dao.GenericDAO;
 import br.com.jsr.tarefas.model.Tarefa;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author jeison
  */
 public class TarefaRepository extends GenericDAO {
+    
+    public void createTable() {
+        String table = """
+                       CREATE TABLE tarefas(
+                           id INT AUTO_INCREMENT PRIMARY KEY,
+                           titulo VARCHAR(60),
+                           descricao VARCHAR(255),
+                           local VARCHAR(255),
+                           dataCriacao DATE,
+                           dataInicio DATE,
+                           dataFim DATE
+                       );""";
+        try (PreparedStatement pstmt = getConnection().prepareStatement(table)) {
+            pstmt.execute();
+        } catch (SQLException ex) {
+            //Logger.getLogger(TarefaRepository.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(
+                    null, 
+                    "Erro ao criar a tabela 'Tarefas', verifique a conexão com o banco de dados."
+            );
+        }
+    }
     
     public void salvar(Tarefa tarefa) throws SQLException {
         String insertSQL = "INSERT INTO tarefas(titulo, descricao, local, dataCriacao, dataInicio, dataFim) VALUES(?, ?, ?, ?, ?, ?)";

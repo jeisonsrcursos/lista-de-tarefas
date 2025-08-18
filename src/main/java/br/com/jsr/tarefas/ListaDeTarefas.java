@@ -4,14 +4,15 @@
 
 package br.com.jsr.tarefas;
 
-import br.com.jsr.tarefas.dao.ConnectDB;
 import br.com.jsr.tarefas.model.Tarefa;
-import br.com.jsr.tarefas.repository.TarefaRepository;
 import br.com.jsr.tarefas.service.TarefaService;
-import java.sql.Connection;
+import br.com.jsr.tarefas.views.Tarefas;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import org.h2.tools.Server;
 
 /**
  *
@@ -20,24 +21,41 @@ import javax.swing.JOptionPane;
 public class ListaDeTarefas {
 
     public static void main(String[] args) {
+        // Criação e inicialização do servidor H2 com o 
+        // banco de dados em memória.
+        Server server = null;
+        try {
+            server = Server.createTcpServer("-tcpAllowOthers").start();
+        } catch (SQLException ex) {
+            Logger.getLogger(ListaDeTarefas.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
-        TarefaService service = new TarefaService();
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new Tarefas().setVisible(true);
+//            }
+//        });
+        
+        //TarefaService service = new TarefaService();
+        
+        //service.createTable();
         
         // Criação e instânciação do 'objeto' tarefa
-//        Tarefa tarefa = new Tarefa();
+        //Tarefa tarefa = new Tarefa();
         // Cadastrando os dados nos respectivos atributos da tarefa
-//        tarefa.setTitulo("Teste 1");
-//        tarefa.setDescricao("Testando");
-//        tarefa.setLocal("São Gonçalo/RJ");
-//        tarefa.setDataInicio(LocalDate.parse("2025-08-14"));
-//        tarefa.setDataFim(LocalDate.parse("2025-08-14"));
+        //tarefa.setTitulo("Teste 1");
+        //tarefa.setDescricao("Testando");
+        //tarefa.setLocal("São Gonçalo/RJ");
+        //tarefa.setDataInicio(LocalDate.parse("2025-08-14"));
+        //tarefa.setDataFim(LocalDate.parse("2025-08-14"));
         // Salvando a tarefa no banco de dados
-//        service.salvar(tarefa);
+        //service.salvar(tarefa);
         
         // Lista todas as tarefas cadastradas no terminal        
-        for(Tarefa t : service.listarTarefas()) {
-            System.out.println(t.toString());
-        }
+        //for(Tarefa t : service.listarTarefas()) {
+            //System.out.println(t.toString());
+        //    JOptionPane.showMessageDialog(null, t.toString());
+        //}
 
 // Criação e instânciação do 'objeto' tarefa
 //        Tarefa tarefa = new Tarefa();
@@ -56,6 +74,8 @@ public class ListaDeTarefas {
         
         // Exibe a tarefa no terminal
 //        System.out.println(tarefa.toString());
+
+    server.stop();
 
     }
 }

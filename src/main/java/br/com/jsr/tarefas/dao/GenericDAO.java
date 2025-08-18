@@ -31,7 +31,7 @@ public abstract class GenericDAO {
             pstmt.setObject(i + 1, parametros[i]);
         }
         pstmt.execute();
-        con.close();
+        pstmt.close();
     }
     
     protected void update(String update, Object id, Object... parametros) throws SQLException {
@@ -42,7 +42,7 @@ public abstract class GenericDAO {
         }
         pstmt.setObject(parametros.length + 1, id);
         pstmt.execute();
-        con.close();
+        pstmt.close();
     }
     
     protected void delete(String delete, Object... parametros) throws SQLException {
@@ -52,7 +52,7 @@ public abstract class GenericDAO {
             pstmt.setObject(i + 1, parametros[i]);
         }
         pstmt.execute();
-        con.close();
+        pstmt.close();
     }
     
 }
